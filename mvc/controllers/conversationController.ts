@@ -1,11 +1,19 @@
 import { Request, Response } from "express";
 import { Op } from "sequelize";
-import { Conversation } from "../models/models";
+import { Conversation, User } from "../models/models";
 
 export const conversationController = {
   createConversation: async (req: Request, res: Response) => {
     try {
-      const { senderId, reciverId } = req.body;
+      //@ts-ignore
+      const senderId = req.userID;
+      const { friendName } = req.body;
+      console.log(friendName);
+
+      const friend = await User.findOne({ where: { username: friendName } });
+      //@ts-ignore
+
+      const reciverId = friend.id;
       const newConversation = await Conversation.create({
         members: [senderId, reciverId],
       });

@@ -74,7 +74,6 @@ io.on("connection", (socket: any) => {
       reciverId: number;
       text: string;
     }) => {
-      console.log(users);
       const user = getUser(reciverId);
       const date = Date.now();
       // @ts-ignore
