@@ -1,0 +1,15 @@
+{
+  "Print to console": {
+    "scope": "javascript,typescript",
+    "prefix": "con",
+    "body": [
+      "async(req: Request, res: Response) => {",
+      " try {",
+      "  } catch (error) {",
+      " res.status(500).json(error ? error : { message: `server error` });",
+      " }",
+      " },"
+    ],
+    "description": "Create base req & res structure"
+  }
+}
